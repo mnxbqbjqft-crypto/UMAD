@@ -6,32 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="ÚMAD zajišťuje nezávislou reflexi vznikajících jevů napříč realitou. Nejsme státní ani nezisková entita a nepobíráme dotace."
+      content="ÚMAD zajišťuje nezávislou reflexi vznikajících jevů napříč realitou."
     />
     <style>
       :root {
-        --color-bg: #f5f5f5;
-        --color-surface: #ffffff;
-        --color-primary: #1a3d6b;
-        --color-primary-soft: #e3ebf7;
-        --color-border: #d4d7dd;
-        --color-text-main: #222831;
-        --color-text-muted: #6b727c;
-        --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.04);
-      }
-
-      /* Korporátně šedý dark mode */
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --color-bg: #111827; /* tlumené tmavě šedé pozadí */
-          --color-surface: #1f2933; /* karta o trochu světlejší */
-          --color-primary: #7ea6e7; /* jemná modrá */
-          --color-primary-soft: #151a22;
-          --color-border: #374151;
-          --color-text-main: #e5e7eb;
-          --color-text-muted: #9ca3af;
-          --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.6);
-        }
+        --bg: #ffffff;
+        --text-main: #101010;
+        --text-muted: #6b7280;
+        --border-subtle: #e5e7eb;
+        --border-strong: #111111;
+        --max-width: 720px;
       }
 
       * {
@@ -45,11 +29,13 @@
       }
 
       body {
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-          sans-serif;
-        background: var(--color-bg);
-        color: var(--color-text-main);
-        line-height: 1.6;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+          "Segoe UI", sans-serif;
+        background: var(--bg);
+        color: var(--text-main);
+        line-height: 1.7;
+        letter-spacing: -0.005em;
+        -webkit-font-smoothing: antialiased;
       }
 
       .page {
@@ -58,184 +44,200 @@
         flex-direction: column;
       }
 
-      .header-bar {
-        background: var(--color-primary);
-        color: #ffffff;
-        font-size: 0.78rem;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        padding: 0.6rem 1.5rem;
-        text-align: center;
-      }
-
       .shell {
-        max-width: 840px;
-        margin: 2.5rem auto 3.5rem;
-        padding: 0 1.5rem;
+        max-width: var(--max-width);
+        margin: 4.5rem auto 3rem;
+        padding: 0 1.75rem;
         width: 100%;
       }
 
-      .card {
-        background: var(--color-surface);
-        border-radius: 12px;
-        border: 1px solid var(--color-border);
-        padding: 2.25rem 2.25rem 2rem;
-        box-shadow: var(--shadow-soft);
+      header.site-header {
+        text-align: center;
+        margin-bottom: 3.2rem;
       }
 
-      .masthead {
-        display: flex;
-        gap: 1.75rem;
-        align-items: center;
-        margin-bottom: 2rem;
-      }
-
-      .seal {
-        width: 72px;
-        height: 72px;
-        border-radius: 999px;
-        border: 1px solid var(--color-primary);
+      .logo-circle {
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 0.85rem;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-        color: var(--color-primary);
-        background: var(--color-primary-soft);
+        margin: 0 auto 2.1rem;
       }
 
-      .masthead-text {
-        flex: 1;
+      .logo-circle img {
+        max-width: 100%;
+        max-height: 100%;
+        display: block;
+        border-radius: 50%;
       }
 
-      .masthead-kicker {
-        font-size: 0.8rem;
+      .kicker {
+        font-size: 0.7rem;
         text-transform: uppercase;
-        letter-spacing: 0.18em;
-        color: var(--color-text-muted);
-        margin-bottom: 0.25rem;
+        letter-spacing: 0.24em;
+        color: var(--text-muted);
+        margin-bottom: 0.9rem;
       }
 
       h1 {
-        font-size: 1.55rem;
-        margin: 0 0 0.35rem;
+        font-size: 2.5rem;
+        margin: 0 0 1.2rem;
         font-weight: 600;
-        letter-spacing: 0.02em;
+        letter-spacing: -0.035em;
       }
 
-      .subline {
-        font-size: 0.9rem;
-        color: var(--color-text-muted);
+      .subtitle {
+        font-size: 1rem;
+        color: var(--text-muted);
         max-width: 32rem;
+        margin: 0 auto;
+      }
+
+      .subtitle strong {
+        color: var(--text-main);
+        font-weight: 500;
+      }
+
+      .section-block {
+        padding: 2.1rem 0;
+        border-top: 1px solid var(--border-subtle);
+      }
+
+      .section-block:first-of-type {
+        border-top: none;
+        padding-top: 0;
+      }
+
+      h2 {
+        font-size: 1.05rem;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: var(--text-muted);
+        margin: 0 0 1rem;
+      }
+
+      p {
+        margin: 0 0 0.95rem;
+        font-size: 0.97rem;
+      }
+
+      .muted {
+        color: var(--text-muted);
+        font-size: 0.9rem;
       }
 
       .notice {
-        border-radius: 10px;
-        border: 1px solid var(--color-border);
-        background: #f8f9fb;
-        padding: 1rem 1.1rem;
-        font-size: 0.9rem;
-        margin-bottom: 1.75rem;
-      }
-
-      @media (prefers-color-scheme: dark) {
-        .notice {
-          background: #151a22;
-        }
+        border: 1px solid var(--border-subtle);
+        padding: 1.5rem 1.6rem 1.3rem;
+        margin-top: 0.4rem;
+        font-size: 0.96rem;
       }
 
       .notice-label {
         font-size: 0.7rem;
         text-transform: uppercase;
         letter-spacing: 0.16em;
-        color: var(--color-text-muted);
-        margin-bottom: 0.25rem;
-      }
-
-      section + section {
-        margin-top: 1.75rem;
-      }
-
-      h2 {
-        font-size: 0.95rem;
-        text-transform: uppercase;
-        letter-spacing: 0.16em;
-        color: var(--color-text-muted);
-        margin: 0 0 0.45rem;
-      }
-
-      p {
-        margin: 0 0 0.65rem;
-        font-size: 0.95rem;
-      }
-
-      .muted {
-        color: var(--color-text-muted);
-        font-size: 0.9rem;
+        color: var(--text-muted);
+        margin-bottom: 0.5rem;
       }
 
       .list {
-        margin: 0.35rem 0 0.3rem 0;
-        padding-left: 1.1rem;
+        margin: 0.7rem 0 0.4rem 0;
+        padding-left: 1.2rem;
       }
 
       .list li {
-        margin-bottom: 0.15rem;
+        margin-bottom: 0.35rem;
         font-size: 0.93rem;
       }
 
       .placeholder {
-        padding: 0.8rem 0.9rem;
-        border-radius: 8px;
-        border: 1px dashed var(--color-border);
-        background: #fafbfc;
+        border: 1px dashed var(--border-subtle);
+        padding: 1.05rem 1.2rem;
         font-size: 0.9rem;
-        color: var(--color-text-muted);
+        color: var(--text-muted);
       }
 
-      @media (prefers-color-scheme: dark) {
-        .placeholder {
-          background: #151a22;
-        }
+      .contact-links a {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 8px;
+        margin-bottom: 4px;
+        font-size: 0.9rem;
+      }
+
+      .contact-links svg {
+        flex-shrink: 0;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: underline;
+        text-underline-offset: 0.16em;
+      }
+
+      a:hover,
+      a:focus-visible {
+        text-decoration: none;
+      }
+
+      a:focus-visible {
+        outline: 2px solid #000;
+        outline-offset: 2px;
+      }
+
+      .alert-strip {
+        max-width: var(--max-width);
+        margin: 0 auto 2.6rem;
+        padding: 1.5rem 1.6rem;
+        border: 1px solid var(--border-strong);
+        font-size: 0.9rem;
+        text-align: center;
+      }
+
+      .alert-strip-label {
+        display: block;
+        font-size: 0.76rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin-bottom: 0.6rem;
       }
 
       .footer {
         margin-top: auto;
-        padding: 1.5rem 1.5rem 2rem;
-        font-size: 0.78rem;
-        color: var(--color-text-muted);
+        padding: 2.2rem 1.75rem 2.8rem;
+        font-size: 0.8rem;
+        color: var(--text-muted);
         text-align: center;
+        border-top: 1px solid var(--border-subtle);
       }
 
       @media (max-width: 640px) {
         .shell {
-          margin-top: 1.5rem;
-          margin-bottom: 2.25rem;
-          padding: 0 1rem;
+          margin-top: 3.5rem;
+          margin-bottom: 2.4rem;
+          padding: 0 1.4rem;
         }
 
-        .card {
-          padding: 1.6rem 1.4rem 1.6rem;
-        }
-
-        .masthead {
-          flex-direction: row;
-          align-items: flex-start;
-        }
-
-        .seal {
-          width: 60px;
-          height: 60px;
-          font-size: 0.8rem;
+        .logo-circle {
+          width: 150px;
+          height: 150px;
+          margin-bottom: 1.7rem;
         }
 
         h1 {
-          font-size: 1.35rem;
+          font-size: 2.05rem;
+        }
+
+        .section-block {
+          padding: 1.8rem 0;
         }
       }
 
-      /* Tisk: jen logo + hláška */
       @media print {
         body {
           background: #ffffff !important;
@@ -268,111 +270,231 @@
   </head>
   <body>
     <!-- 
-  Interní poznámka:
-  V rámci metodického rámce se shodujeme, že nikdo přesně neví, co děláme.
-  Prosíme, zachovejte tento stav.
--->
+      Interní poznámka:
+      V rámci metodického rámce se shodujeme, že nikdo přesně neví, co děláme.
+      Prosíme, zachovejte tento stav.
+    -->
     <div class="page">
-      <div class="header-bar">
-        Ústav Monitoringu Aktuálního Dění.
-      </div>
-
       <main class="shell">
-        <article class="card" aria-labelledby="umad-title">
-          <header class="masthead">
-            <!-- Tady můžeš nahradit .seal obrázkovým logem -->
-            <div class="seal">
-              ÚMAD
-            </div>
-            <div class="masthead-text">
-              <div class="masthead-kicker">
-                Provozní rámec observace jevů
-              </div>
-              <h1 id="umad-title">Ústav Monitoringu Aktuálního Dění (ÚMAD)</h1>
-              <p class="subline">
-                Neoficiální, nezávislá jednotka zaměřená na sledování, popis a
-                interpretaci dění napříč realitou.
-              </p>
-            </div>
-          </header>
+        <header class="site-header">
+          <div class="logo-circle">
+            <img src="logo-umad.png" alt="Logo ÚMAD" />
+          </div>
+          <h1>Ústav Monitoringu Aktuálního Dění</h1>
+          <p class="subtitle">
+            <strong>Jednotka zaměřená na administrativní záznam dění.</strong>
+          </p>
+        </header>
 
-          <div class="notice" aria-label="Základní vymezení">
+        <section class="section-block" aria-label="Základní vymezení">
+          <div class="notice">
             <div class="notice-label">Základní prohlášení</div>
             <p>
-              <strong
-                >ÚMAD zajišťuje nezávislou reflexi vznikajících jevů napříč
-                realitou.</strong
-              >
-              Nejsme státní ani nezisková entita a nepobíráme dotace. Na tomto
-              místě budeme průběžně zveřejňovat analytická pozorování mapující
-              vývojové situace všeho.
+              ÚMAD provádí nezávislou reflexi jevů, které se objevují napříč
+              realitou bez ohledu na jejich význam, rozsah nebo důsledky. Ústav
+              není státní ani neziskovou entitou, nepobírá dotace a neslouží
+              politickým stranám, oligarchickým strukturám, zájmovým skupinám
+              ani jiným subjektům usilujícím o vliv nad interpretací dění.
             </p>
+            <p>Respektujte prosím tento ústav se vší vážností.</p>
           </div>
+        </section>
 
-          <section aria-label="Charakter činnosti">
-            <h2>Charakter činnosti</h2>
-            <p>
-              ÚMAD se zaměřuje na průběžné sledování informací a situací, které
-              ovlivňují rytmus aktuálního dění. Sledujeme vývojové tendence ve
-              veřejné komunikaci, proměnlivé společenské okolnosti a rámce,
-              které doprovázejí vznik i interpretaci jednotlivých jevů.
-            </p>
-            <p class="muted">
-              Naše analytická činnost pokrývá oblasti, jež není vždy možné
-              jednoznačně kategorizovat, a vytváří základní orientační přehledy
-              týkající se vývoje aktuálních situací napříč realitou.
-            </p>
-          </section>
+        <section class="section-block" aria-label="Charakter činnosti">
+          <h2>Charakter činnosti</h2>
+          <p>
+            ÚMAD se zabývá identifikací situací, u nichž existuje byť jen
+            předběžný náznak, že by mohly být považovány za relevantní. Za
+            relevantní přitom považujeme veškeré jevy, které jsou pozorovatelné,
+            potenciálně pozorovatelné, hypoteticky odvoditelné nebo pouze
+            administrativně předpokládané.
+          </p>
+          <p class="muted">
+            Ústav nevytváří rozdíly mezi událostmi s dopadem, bez dopadu, se
+            zpětným dopadem ani s dopadem, jehož existence je předmětem dalšího
+            šetření. Tato metodická rovnost vychází z předpokladu, že realita v
+            mnoha případech neposkytuje dostatečné podklady pro hierarchické
+            třídění, a jakýkoli pokus o strukturalizaci by tak mohl narušit její
+            přirozenou neurčitost.
+          </p>
+        </section>
 
-          <section aria-label="Institucionální vymezení">
-            <h2>Institucionální vymezení</h2>
-            <ul class="list">
-              <li>
-                nejsme orgánem veřejné správy, státní institucí ani samosprávným
-                celkem,
-              </li>
-              <li>
-                nejsme neziskovou organizací a nečerpáme žádné dotace ani
-                podporu z veřejných zdrojů,
-              </li>
-              <li>nevykonáváme správní ani dozorové pravomoci.</li>
-            </ul>
-            <p class="muted">
-              ÚMAD funguje jako samostatná iniciativa, jejímž cílem je vytvářet
-              odborně působící, avšak neautoritativní rámec pro orientaci v
-              průběžném dění.
-            </p>
-          </section>
+        <section class="section-block" aria-label="Institucionální vymezení">
+          <h2>Institucionální vymezení</h2>
+          <ul class="list">
+            <li>
+              ÚMAD není organizačně, funkčně ani procesně zařazen do žádného
+              ministerstva, resortu, agentury, odboru, sekce, výboru, rady,
+              komise, podkomise, panelu, meziresortní pracovní skupiny ani do
+              žádné struktury, která by mohla být vykládána jako formální nebo
+              neformální nadřízená, podřízená či souběžně existující. Ústav
+              rovněž nefiguruje v žádném interním schématu, které by naznačovalo
+              jeho návaznost na procesní rámce jiných subjektů, a to ani v
+              případech, kdy takové schéma vzniklo omylem nebo historickou
+              setrvačností.
+            </li>
+            <li>
+              ÚMAD zároveň nenáleží k politickým stranám, hnutím, neziskovým
+              organizacím, akademickým institucím, podnikatelským entitám,
+              médiím, poradenským strukturám, nátlakovým skupinám, zájmovým
+              koalicím ani k formacím, které existují pouze na papíře, v
+              rejstříku nebo v představách jednotlivých aktérů. Ústav nelze
+              využít jako nástroj komunikace, propagace, rozhodování,
+              legitimizace ani koordinace činností, jelikož jeho postavení není
+              určeno k výkonu žádné z uvedených funkcí.
+            </li>
+            <li>
+              ÚMAD neposkytuje výklady, metodiky, návrhy, stanoviska, koncepty,
+              doporučení ani závěry. Veškeré výstupy Ústavu mají povahu
+              evidenčních záznamů o tom, že se určitý jev vyskytl, případně
+              nevyskytl, nebo byl pozorován v míře, která neumožňuje formulovat
+              jakýkoli praktický závěr. Funkce těchto záznamů je čistě
+              dokumentační, nikoli určovací, závazková či rozhodovací.
+            </li>
+          </ul>
+          <p class="muted">
+            Jakýkoli pokus přiřadit ÚMAD pod existující instituci, konkrétní
+            hierarchii nebo procesní řetězec je nutné považovat za interpretační
+            nepřesnost, organizační zkratku nebo snahu přiřadit odpovědnost tam,
+            kde z povahy věci k dispozici není. Ústav své nezařaditelné
+            postavení považuje za stabilní a metodologicky plně dostačující.
+          </p>
+        </section>
 
-          <section aria-label="Aktuální sdělení">
-            <h2>Aktuální sdělení</h2>
-            <div class="placeholder">
-              V této oblasti budou zveřejňována průběžná analytická sdělení k
-              vývojovým situacím. V současné chvíli nejsou k dispozici žádné
-              publikované výstupy.
-            </div>
-          </section>
+        <section class="section-block" aria-label="Aktuální sdělení">
+          <h2>Aktuální sdělení</h2>
+          <div class="placeholder">
+            V této oblasti budou zveřejňována průběžná analytická sdělení k
+            vývojovým situacím. Aktuální absence výstupů je plánovaným stavem,
+            který odráží skutečnost, že Ústav se v tuto chvíli věnuje spíše
+            pozorování než zveřejňování.
+          </div>
+        </section>
 
-          <section aria-label="Kontakt">
-            <h2>Kontakt</h2>
-            <p>
-              Pro komunikaci s Ústavem Monitoringu Aktuálního Dění využívejte
-              preferovaně elektronickou formu.
-            </p>
-            <p class="muted">
-              E-mailová adresa bude doplněna po dokončení nastavení komunikační
-              infrastruktury.
-              <!-- Např.: <a href="mailto:info@umad.cz">info@umad.cz</a> -->
-            </p>
-          </section>
-        </article>
+        <section class="section-block" aria-label="Kontakt">
+          <h2>Kontakt</h2>
+          <p>
+            Přímé oslovení Ústavu je možné, avšak doporučujeme jej využívat
+            výhradně v situacích, kdy to není nezbytně nutné a kdy očekávaný
+            přínos kontaktu není zcela zřejmý.
+          </p>
+
+          <p class="muted contact-links">
+            Pro sledování výstupů a pro dotazy, které nepovažujete za urgentní,
+            využijte prosím naše oficiální profily:
+            <br />
+
+            <a
+              href="https://instagram.com/umad.cz"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <rect
+                  x="2"
+                  y="2"
+                  width="20"
+                  height="20"
+                  rx="5"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="4.5"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+                <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" />
+              </svg>
+              Instagram: @umad.cz
+            </a>
+            <br />
+
+            <a
+              href="https://threads.net/@umad.cz"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 192 192"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.182 170.016 117.576 174.908 97.0135 175.059C74.2042 174.89 56.9538 167.575 45.7381 153.317C35.2355 139.966 29.8077 120.682 29.6052 96C29.8077 71.3178 35.2355 52.0336 45.7381 38.6827C56.9538 24.4249 74.2039 17.11 97.0132 16.9405C119.988 17.1113 137.539 24.4614 149.184 38.788C154.894 45.8136 159.199 54.6488 162.037 64.9503L178.184 60.6422C174.744 47.9622 169.331 37.0357 161.965 27.974C147.036 9.60668 125.202 0.195148 97.0695 0H96.9569C68.8816 0.19447 47.2921 9.6418 32.7883 28.0793C19.8819 44.4864 13.2244 67.3157 13.0007 95.9325L13 96L13.0007 96.0675C13.2244 124.684 19.8819 147.514 32.7883 163.921C47.2921 182.358 68.8816 191.806 96.9569 192H97.0695C122.03 191.827 139.624 185.292 154.118 170.811C173.081 151.866 172.51 128.119 166.26 113.541C161.776 103.087 153.227 94.5962 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"
+                  fill="currentColor"
+                />
+              </svg>
+              Threads: @umad.cz
+            </a>
+            <br />
+
+            <a href="" target="_blank" rel="noopener noreferrer">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <rect
+                  x="2"
+                  y="2"
+                  width="20"
+                  height="20"
+                  rx="4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+                <path
+                  d="M13.2 18V12.8H15.3L15.7 10.3H13.2V8.8C13.2 8.1 13.4 7.6 14.5 7.6H15.8V5.4C15.2 5.3 14.5 5.2 13.7 5.2C11.7 5.2 10.3 6.4 10.3 8.6V10.3H8.2V12.8H10.3V18H13.2Z"
+                  fill="currentColor"
+                />
+              </svg>
+              Facebook: @umad.cz
+            </a>
+          </p>
+
+          <p class="muted">
+            E-mailová adresa Ústavu bude zveřejněna po dokončení interního
+            validačního procesu, v němž posuzujeme, zda je přímý přenos
+            informací kompatibilní s dlouhodobými cíli ÚMAD. Proces je
+            víceetapový a časově neomezený.
+          </p>
+        </section>
+
+        <section class="alert-strip" aria-label="Upozornění ÚMAD">
+          <span class="alert-strip-label">Upozornění ÚMAD</span>
+          Jakékoli zlehčování, parodování či zneuctění Ústavu může být zařazeno
+          do režimu mimořádného interního řízení. V jeho rámci může být dotčená
+          osoba dočasně nebo trvale přeřazena z kategorie plnohodnotných
+          účastníků společenského dění do skupiny entit s omezenou vážností,
+          sníženou interpretační spolehlivostí a doporučeným odstupem ze strany
+          okolí.
+        </section>
       </main>
 
       <footer class="footer">
-        Ústav Monitoringu Aktuálního Dění (ÚMAD) – neoficiální analytická
-        jednotka bez institucionálního statusu.
+        Ústav Monitoringu Aktuálního Dění (ÚMAD) – samostatná analytická
+        jednotka bez institucionálního ukotvení.
         <br />
-        Tento web nemá povahu úřední desky ani závazného informačního systému.
+        Obsah této stránky nepředstavuje úřední sdělení, metodické vedení ani
+        použitelný návod k orientaci v aktuálním dění.
       </footer>
     </div>
   </body>
